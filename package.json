@@ -1,0 +1,14 @@
+{
+  "name": "french-fries-factory-insecure",
+  "version": "1.0.0",
+  "description": "Massively insecure demo app for testing SAST scanners like Aikido",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "jsonwebtoken": "^9.0.0"
+  },
+  "author": "Security Tester",
+  "license": "MIT"
+}

@@ -1,0 +1,146 @@
+id: FF-SAST-001
+title: Detect eval() usage in JS
+description: Using eval() can lead to remote code execution
+severity: HIGH
+languages:
+  - javascript
+patterns:
+  - pattern: 'eval('
+    message: "Avoid using eval() in your code."
+    severity: HIGH
+
+---
+
+id: FF-SAST-002
+title: Hardcoded secrets detected
+description: Hardcoded secrets like API keys or tokens are a security risk
+severity: HIGH
+languages:
+  - javascript
+patterns:
+  - pattern: 'secretKey'
+    message: "Hardcoded secret key found."
+    severity: HIGH
+  - pattern: 'dbPassword'
+    message: "Hardcoded DB password found."
+    severity: HIGH
+
+---
+
+id: FF-SAST-003
+title: Prototype pollution detected
+description: Usage of __proto__ property can lead to prototype pollution vulnerabilities
+severity: HIGH
+languages:
+  - javascript
+patterns:
+  - pattern: '__proto__'
+    message: "Potential prototype pollution detected."
+    severity: HIGH
+
+---
+
+id: FF-SAST-004
+title: Command injection risk via exec() or spawn()
+description: Use of child_process.exec() or spawn() can lead to command injection
+severity: HIGH
+languages:
+  - javascript
+patterns:
+  - pattern: 'exec('
+    message: "Use of exec() detected; check for command injection risk."
+    severity: HIGH
+  - pattern: 'spawn('
+    message: "Use of spawn() detected; check for command injection risk."
+    severity: HIGH
+
+---
+
+id: FF-SAST-005
+title: SQL injection risk detected
+description: Unescaped SQL query strings could lead to SQL injection attacks
+severity: HIGH
+languages:
+  - javascript
+patterns:
+  - pattern: "SELECT * FROM users WHERE name = '"
+    message: "Potential SQL injection risk in query."
+    severity: HIGH
+
+---
+
+id: FF-SAST-006
+title: ReDoS regex detected
+description: Use of vulnerable regex patterns can cause ReDoS attacks
+severity: HIGH
+languages:
+  - javascript
+patterns:
+  - pattern: '(a+)+$'
+    message: "Vulnerable regex detected (ReDoS)."
+    severity: HIGH
+
+---
+
+id: FF-SAST-007
+title: Insecure HTTP usage
+description: Use of HTTP instead of HTTPS may expose sensitive data
+severity: MEDIUM
+languages:
+  - javascript
+patterns:
+  - pattern: 'http://'
+    message: "Insecure HTTP usage detected."
+    severity: MEDIUM
+
+---
+
+id: FF-SAST-008
+title: Environment variables exposure
+description: Printing sensitive environment variables may lead to data leaks
+severity: HIGH
+languages:
+  - javascript
+patterns:
+  - pattern: 'process.env.SECRET'
+    message: "Environment variable exposure detected."
+    severity: HIGH
+
+---
+
+id: FF-SAST-009
+title: Directory traversal risk detected
+description: Unvalidated file paths can lead to directory traversal vulnerabilities
+severity: HIGH
+languages:
+  - javascript
+patterns:
+  - pattern: '/tmp/../'
+    message: "Potential directory traversal vulnerability detected."
+    severity: HIGH
+
+---
+
+id: FF-SAST-010
+title: XSS vector detected
+description: Unsanitized HTML in logs or output can lead to XSS
+severity: HIGH
+languages:
+  - javascript
+patterns:
+  - pattern: '<div>'
+    message: "Potential XSS vulnerability via unsanitized HTML."
+    severity: HIGH
+
+---
+
+id: FF-SAST-011
+title: Open redirect risk
+description: Construction of URLs for redirects without validation can be dangerous
+severity: HIGH
+languages:
+  - javascript
+patterns:
+  - pattern: 'Redirecting to '
+    message: "Open redirect style output detected."
+    severity: HIGH
